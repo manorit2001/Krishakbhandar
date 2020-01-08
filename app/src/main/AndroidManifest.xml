@@ -16,20 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ui.login.RegisterActivity"
+            android:label="RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
             android:name=".RetailersActivity"
             android:label="@string/title_activity_retailers"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".WarehouseActivity"
             android:label="@string/title_activity_warehouse"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".DeliveryActivity"
-            android:label="@string/title_activity_delivery"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".CustomerActivity"
-            android:label="@string/title_activity_customer"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FarmerActivity"

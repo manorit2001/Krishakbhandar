@@ -1,10 +1,12 @@
 package com.example.mapstest.ui.login;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.text.Editable;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -50,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                             "Redirecting...",Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getApplicationContext(), "Sign Up",Toast.LENGTH_SHORT).show();
+                    signup(usernameEditText.getText(),passwordEditText.getText());
                 }
             }
         });
@@ -135,9 +138,10 @@ public class LoginActivity extends AppCompatActivity {
     {
 
     }
-    private void signup(String name,String passwd)
+    private void signup(Editable name, Editable passwd)
     {
-
+        Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
+        startActivity(intent);
     }
 
 //    private void updateUiWithUser(LoggedInUserView model) {

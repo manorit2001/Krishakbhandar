@@ -2,19 +2,14 @@
     <string name="app_name">mapstest</string>
     <string name="title_activity_map">MapActivity</string>
     <string name="title_activity_tempmaps">Map</string>
+    <string name="title_activity_register">Sign Up</string>
 ***REMOVED***
     <string name="title_activity_login">Sign in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
     <string name="title_activity_farmer">FarmerActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
@@ -26,8 +21,6 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
-    <string name="title_activity_customer">CustomerActivity</string>
-    <string name="title_activity_delivery">DeliveryActivity</string>
     <string name="title_activity_warehouse">WarehouseActivity</string>
     <string name="title_activity_retailers">RetailersActivity</string>
 

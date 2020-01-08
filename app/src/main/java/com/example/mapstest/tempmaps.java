@@ -154,7 +154,7 @@ public class tempmaps extends FragmentActivity implements OnMapReadyCallback {
                 );
 */
                 String TAG;
-                TAG = new String("output");
+                TAG = "output";
                 placesclient.findAutocompletePredictions(predictionsRequest).addOnSuccessListener((response) -> {
                     List<String> suggestionList = new ArrayList<>();
                     predictionList = response.getAutocompletePredictions();

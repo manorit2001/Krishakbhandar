@@ -17,8 +17,8 @@ public class FarmerHelper extends SQLiteOpenHelper {
     public static final String CONTACTS_COLUMN_ID = "id";
     public static final String CONTACTS_COLUMN_NAME = "name";
     public static final String CONTACTS_COLUMN_EMAIL = "email";
-    public static final String CONTACTS_COLUMN_LAT = "Latitude";
-    public static final String CONTACTS_COLUMN_LONG = "Longitude";
+    public static final String CONTACTS_COLUMN_LAT = "latitude";
+    public static final String CONTACTS_COLUMN_LONG = "longitude";
     public static final String CONTACTS_COLUMN_PHONE = "phone";
     private HashMap hp;
 
@@ -30,8 +30,8 @@ public class FarmerHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
         db.execSQL(
-                "create table contacts " +
-                        "(id integer primary key, name text,phone text,email text, street text,place text)"
+                "create table farmer " +
+                        "(id integer primary key, name text,phone text,email text, lat integer,long integer)"
         );
     }
 
@@ -50,7 +50,7 @@ public class FarmerHelper extends SQLiteOpenHelper {
         contentValues.put("email", email);
         contentValues.put("street", street);
         contentValues.put("place", place);
-        db.insert("contacts", null, contentValues);
+        db.insert("farmer", null, contentValues);
         return true;
     }
 
