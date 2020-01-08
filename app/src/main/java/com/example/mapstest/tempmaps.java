@@ -65,6 +65,7 @@ public class tempmaps extends FragmentActivity implements OnMapReadyCallback {
     private List<AutocompletePrediction> predictionList;
     private Location mLastKnownLocation;
     private LocationCallback locationCallback;
+    private LatLng locselected;
 
     private MaterialSearchBar materialSearchBar;
     private Button bttnfind;
@@ -87,6 +88,16 @@ public class tempmaps extends FragmentActivity implements OnMapReadyCallback {
             Places.initialize(getApplicationContext(), getString(R.string.google_maps_key));
         placesclient = Places.createClient(this);
         final AutocompleteSessionToken token = AutocompleteSessionToken.newInstance();
+
+        bttnfind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.putExtra("location",locselected);
+                setResult(RESULT_OK,intent);
+                finish();
+            }
+        });
 
         materialSearchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
             @Override
@@ -194,8 +205,10 @@ public class tempmaps extends FragmentActivity implements OnMapReadyCallback {
                             @Override
                             public void onSuccess(FetchPlaceResponse fetchPlaceResponse) {
                                 LatLng latLng = fetchPlaceResponse.getPlace().getLatLng();
-                                if(latLng != null)
-                                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,DEFAULT_ZOOM));
+                                if(latLng != null) {
+                                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM));
+                                    locselected = latLng;
+                                }
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -369,7 +382,9 @@ public class tempmaps extends FragmentActivity implements OnMapReadyCallback {
                                         if (locationResult == null)
                                             return;
                                         mLastKnownLocation = locationResult.getLastLocation();
-                                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
+                                        LatLng latLng=new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude());
+                                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM));
+                                        locselected=latLng;
                                         mFusedLocationProviderCLient.removeLocationUpdates(locationCallback);
                                     }
                                 };
