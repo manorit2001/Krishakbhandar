@@ -26,7 +26,10 @@
             <RelativeLayout
                 android:id="@+id/rlayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/sign_up_gap"
+                android:paddingRight="@dimen/sign_up_gap"
+                >
 
                 <TextView
                     android:id="@+id/usertype"
@@ -34,8 +37,6 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/my_toolbar"
                     android:layout_marginTop="@dimen/sign_up_gap"
-                    android:layout_marginLeft="@dimen/sign_up_gap"
-                    android:layout_marginRight="@dimen/sign_up_gap"
                     android:text="User Type:"
                     tools:ignore="NotSibling" />
 
@@ -44,8 +45,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/sign_up_gap"
-                    android:layout_marginLeft="@dimen/sign_up_gap"
-                    android:layout_marginRight="@dimen/sign_up_gap"
                     android:layout_below="@id/usertype"
                     ></Spinner>
 
@@ -54,8 +53,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/sign_up_gap"
-                    android:layout_marginRight="@dimen/sign_up_gap"
-                    android:layout_marginLeft="@dimen/sign_up_gap"
                     android:layout_marginBottom="@dimen/sign_up_gap"
                     android:layout_below="@id/spinner"
                     android:hint="First Name"
@@ -67,8 +64,9 @@
                     android:id="@+id/lastname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/sign_up_gap"
                     android:layout_below="@id/firstname"
+                    android:layout_marginTop="@dimen/sign_up_gap"
+                    android:layout_marginBottom="@dimen/sign_up_gap"
                     android:hint="Last Name"
                     android:inputType="textPersonName"
                     android:selectAllOnFocus="true"
@@ -78,8 +76,9 @@
                     android:id="@+id/mobno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/sign_up_gap"
                     android:layout_below="@id/lastname"
+                    android:layout_marginTop="@dimen/sign_up_gap"
+                    android:layout_marginBottom="@dimen/sign_up_gap"
                     android:hint="Mobile No"
                     android:inputType="phone"
                     android:textStyle="italic" />
@@ -89,7 +88,8 @@
                     android:layout_below="@id/mobno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/sign_up_gap"
+                    android:layout_marginTop="@dimen/sign_up_gap"
+                    android:layout_marginBottom="@dimen/sign_up_gap"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:textStyle="italic" />
@@ -99,49 +99,72 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
+                    android:autofillHints="password"
                     android:layout_below="@id/email"
-                    android:layout_margin="@dimen/sign_up_gap"
+                    android:layout_marginTop="@dimen/sign_up_gap"
+                    android:layout_marginBottom="@dimen/sign_up_gap"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:selectAllOnFocus="true"
                     android:textStyle="italic"
                  />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/linear1"
                     android:orientation="vertical"
                     android:layout_below="@id/password">
+
+                    <LinearLayout
+                        android:id="@+id/Locationview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
                         <TextView
-                            android:id="@+id/dummytext"
-                            android:layout_width="match_parent"
+                            android:id="@+id/locationtext"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/sign_up_gap"
-                            android:layout_marginLeft="@dimen/sign_up_gap"
-                            android:text="hello"
-                            android:visibility="gone"
+                            android:text="Set Location"
                             android:textStyle="italic"
+                            />
+                        <Button
+                            android:id="@+id/locbutton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Select" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/dummytext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/sign_up_gap"
+                        android:layout_marginBottom="@dimen/sign_up_gap"
+                        android:text="hello"
+                        android:visibility="gone"
+                        android:textStyle="italic"
                         />
                     <Button
                         android:id="@+id/dummybutton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/sign_up_gap"
-                        android:layout_marginLeft="@dimen/sign_up_gap"
+                        android:layout_marginTop="@dimen/sign_up_gap"
+                        android:layout_marginBottom="@dimen/sign_up_gap"
                         android:text="Select"
                         android:visibility="gone"/>
-                        <EditText
-                            android:id="@+id/dummyedit"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/sign_up_gap"
-                            android:layout_marginLeft="@dimen/sign_up_gap"
-                            android:hint=""
-                            android:visibility="gone"
-                            android:textStyle="italic"
-                            />
+                    <EditText
+                        android:id="@+id/dummyedit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/sign_up_gap"
+                        android:layout_marginBottom="@dimen/sign_up_gap"
+                        android:hint=""
+                        android:visibility="gone"
+                        android:textStyle="italic"
+                        />
 
 
                 </LinearLayout>
@@ -153,7 +176,7 @@
                     android:layout_marginLeft="@dimen/sign_up_gap"
                     android:layout_marginRight="@dimen/sign_up_gap"
                     android:layout_below="@id/linear1"
-                    android:enabled="true"
+                    android:enabled="false"
                     android:text="Register" />
             </RelativeLayout>
         </LinearLayout>

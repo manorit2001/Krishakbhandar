@@ -63,6 +63,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="24dp"
+        android:autofillHints="password"
         android:textStyle="italic"
         android:hint="@string/prompt_password"
 
@@ -75,17 +76,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Error!"
+        android:layout_marginTop="@dimen/sign_up_gap"
+        android:textSize="15sp"
+        android:textColor="#FF0000"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/password"
+        android:visibility="gone"
+        />
+
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/password"
+        android:layout_below="@+id/error"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="48dp"
         android:layout_marginTop="82dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="64dp"
-        android:enabled="true"
+        android:enabled="false"
         android:gravity="center_horizontal"
         android:text="@string/action_sign_in"
         app:layout_constraintBottom_toBottomOf="parent"

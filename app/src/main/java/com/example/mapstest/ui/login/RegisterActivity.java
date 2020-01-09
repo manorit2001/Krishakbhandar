@@ -6,7 +6,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,18 +26,104 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private ArrayList<View> views = new ArrayList<View>();
     final private int LOCATION_RES=1;
+    private Boolean validuser=new Boolean(true);
+    private Boolean validpass=new Boolean(true);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         Spinner spinner = findViewById(R.id.spinner);
+        final EditText usernameEditText=(EditText) findViewById(R.id.email);
+        final EditText passwordEditText=(EditText) findViewById(R.id.password);
+        final Button registerButton = findViewById(R.id.signup);
+//        final TextView error = (TextView) findViewById(R.id.error);
+        Intent intent=getIntent();
+        usernameEditText.setText(intent.getStringExtra("name"));
+        passwordEditText.setText(intent.getStringExtra("pass"));
 
+        usernameEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Pattern p= Patterns.EMAIL_ADDRESS;
+                Matcher m=p.matcher(s);
+//                Toast.makeText(LoginActivity.this, Boolean.toString(m.matches()), Toast.LENGTH_SHORT).show();
+                if(m.matches())
+                {
+                    validuser=true;
+                    if(validpass)
+                    {
+//                        error.setVisibility(View.INVISIBLE);
+                        registerButton.setEnabled(true);
+                    }
+//                    else
+//                    {
+//                        error.setText("Password less than 5 characters!");
+//                        error.setVisibility(View.VISIBLE);
+//                        registerButton.setEnabled(false);
+//                    }
+                }
+                else{
+                    validuser=false;
+                    usernameEditText.setError("Email not Valid!");
+//                    error.setText("Email not Valid!");
+//                    error.setVisibility(View.VISIBLE);
+                    registerButton.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        passwordEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.length()>5){
+                    validpass=true;
+                    if(validuser){
+//                        error.setVisibility(View.INVISIBLE);
+                        registerButton.setEnabled(true);
+                    }
+//                    else
+//                    {
+//                        error.setText("Email not Valid!");
+//                        error.setVisibility(View.VISIBLE);
+//                        registerButton.setEnabled(false);
+//                    }
+                }
+                else{
+                    validpass=false;
+                    passwordEditText.setError("Password less than 5 characters!");
+//                    error.setText("Password less than 5 characters!");
+//                    error.setVisibility(View.VISIBLE);
+//                    registerButton.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -118,29 +207,33 @@ public class RegisterActivity extends AppCompatActivity {
         editText.setHint("dummy");
         views.add(editText);
         editText.setLayoutParams(layoutParams);
+        //location button
+        LinearLayout loc=(LinearLayout) findViewById(R.id.Locationview);
+        loc.setVisibility(View.VISIBLE);
 
-        //text view
-        layoutParams = (LinearLayout.LayoutParams) findViewById(R.id.dummytext).getLayoutParams();
-        TextView textView= new TextView(RegisterActivity.this);
-        textView.setText("Location");
-        views.add(textView);
-        textView.setLayoutParams(layoutParams);
-
-        //button
-        Button locbtn = new Button(RegisterActivity.this);
-        layoutParams = (LinearLayout.LayoutParams) findViewById(R.id.dummybutton).getLayoutParams();
-//                        layoutParams.topMargin = R.dimen.sign_up_gap;
-        layoutParams.bottomMargin = getResources().getDimensionPixelSize(R.dimen.sign_up_gap);
-//                        layoutParams.setMargins(getResources().getDimensionPixelSize(R.dimen.sign_up_gap),0,getResources().getDimensionPixelSize(R.dimen.sign_up_gap),getResources().getDimensionPixelSize(R.dimen.sign_up_gap));
-        locbtn.setText("Set");
+//        //text view
+//        layoutParams = (LinearLayout.LayoutParams) findViewById(R.id.dummytext).getLayoutParams();
+//        TextView textView= new TextView(RegisterActivity.this);
+//        textView.setText("Location");
+//        views.add(textView);
+//        textView.setLayoutParams(layoutParams);
+//
+//        //button
+//        Button locbtn = new Button(RegisterActivity.this);
+//        layoutParams = (LinearLayout.LayoutParams) findViewById(R.id.dummybutton).getLayoutParams();
+////                        layoutParams.topMargin = R.dimen.sign_up_gap;
+//        layoutParams.bottomMargin = getResources().getDimensionPixelSize(R.dimen.sign_up_gap);
+////                        layoutParams.setMargins(getResources().getDimensionPixelSize(R.dimen.sign_up_gap),0,getResources().getDimensionPixelSize(R.dimen.sign_up_gap),getResources().getDimensionPixelSize(R.dimen.sign_up_gap));
+//        locbtn.setText("Set");
+        Button locbtn=(Button) findViewById(R.id.locbutton);
         locbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivityForResult(new Intent(RegisterActivity.this, tempmaps.class),LOCATION_RES);
             }
         });
-        views.add(locbtn);
-        locbtn.setLayoutParams(layoutParams);
+//        views.add(locbtn);
+//        locbtn.setLayoutParams(layoutParams);
 
         return views;
 
