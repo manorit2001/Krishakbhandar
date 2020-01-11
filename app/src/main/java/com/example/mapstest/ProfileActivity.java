@@ -13,11 +13,14 @@ import androidx.appcompat.widget.Toolbar;
 
 public class ProfileActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         Toolbar toolbar = findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -28,6 +31,13 @@ public class ProfileActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        // Populate the profile information if exists.
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            setTitle(extras.getString("NAME", getString(R.string.profile_name)));
+        }
+
     }
 
     @Override
