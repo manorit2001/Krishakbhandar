@@ -18,12 +18,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         TextView textViewName;
         TextView textViewVersion;
         ImageView listimagewarehouseIcon;
+        TextView listloc;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             this.textViewName = (TextView) itemView.findViewById(R.id.listnamewarehouse);
             this.textViewVersion = (TextView) itemView.findViewById(R.id.listdistwarehouse);
             this.listimagewarehouseIcon = (ImageView) itemView.findViewById(R.id.listimagewarehouse);
+            this.listloc= (TextView) itemView.findViewById(R.id.listlocwarehouse);
         }
     }
 
@@ -35,7 +37,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public MyViewHolder onCreateViewHolder(ViewGroup parent,
                                            int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_lists, parent, false);
+                .inflate(R.layout.card_view, parent, false);
 
 //        view.setOnClickListener(lists.myOnClickListener);
 
@@ -49,10 +51,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         TextView textViewName = holder.textViewName;
         TextView textViewVersion = holder.textViewVersion;
         ImageView listimagewarehouse = holder.listimagewarehouseIcon;
+        TextView listloc = holder.listloc;
 
         textViewName.setText(dataSet.get(listPosition).get_name());
         textViewVersion.setText(dataSet.get(listPosition).get_dist());
         listimagewarehouse.setImageResource(dataSet.get(listPosition).get_image());
+        listloc.setText(dataSet.get(listPosition).get_loc());
     }
 
     @Override

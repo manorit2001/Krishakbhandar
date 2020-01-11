@@ -42,12 +42,15 @@ public class lists extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         data = new ArrayList<WarehouseModel>();
-        for (int i = 0; i < 3; i++) {
+        int n=3;
+        for (int i = 0; i < n; i++) {
             data.add(new WarehouseModel(
                     MyWarehouseData.nameArray[i],
                     MyWarehouseData.distArray[i],
                     MyWarehouseData.id_[i],
-                    MyWarehouseData.drawableArray[i]
+                    MyWarehouseData.drawableArray[i],
+                    MyWarehouseData.loc[i]
+
             ));
         }
         adapter = new CustomAdapter(data);
