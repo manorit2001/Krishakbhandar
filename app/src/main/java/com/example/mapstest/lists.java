@@ -42,7 +42,7 @@ public class lists extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         data = new ArrayList<WarehouseModel>();
-        int n=3;
+        int n=11;
         for (int i = 0; i < n; i++) {
             data.add(new WarehouseModel(
                     MyWarehouseData.nameArray[i],
