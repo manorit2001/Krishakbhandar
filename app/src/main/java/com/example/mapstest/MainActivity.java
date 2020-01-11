@@ -25,7 +25,6 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 public class MainActivity extends AppCompatActivity {
-
     private Button btngrant;
 
     @Override
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            startActivity(new Intent(MainActivity.this, FarmerActivity.class));
+            startActivity(new Intent(MainActivity.this, lists.class));
             finish();
             return;
         }
@@ -63,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
                                                             Intent intent = new Intent();
                                                             intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                                                             intent.setData(Uri.fromParts("package", getPackageName(), null));
-
                                                         }
                                                     }
                                             ).show();
