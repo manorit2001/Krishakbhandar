@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class lists extends AppCompatActivity {
 
@@ -24,15 +25,12 @@ public class lists extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
     private static ArrayList<WarehouseModel> data;
-//    static View.OnClickListener myOnClickListener;
-//    private static ArrayList<Integer> removedItems;
+    private static List<WarehouseModel> warehouseData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_view);
-
-//        myOnClickListener = new MyOnClickListener(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -42,9 +40,12 @@ public class lists extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         data = new ArrayList<WarehouseModel>();
+        warehouseData = new ArrayList<WarehouseModel>();
+
+
         int n=11;
         for (int i = 0; i < n; i++) {
-            data.add(new WarehouseModel(
+            warehouseData.add(new WarehouseModel(
                     MyWarehouseData.nameArray[i],
                     MyWarehouseData.distArray[i],
                     MyWarehouseData.id_[i],
@@ -53,40 +54,8 @@ public class lists extends AppCompatActivity {
 
             ));
         }
-        adapter = new CustomAdapter(data);
+        adapter = new WarehouseAdapter(getBaseContext(), warehouseData);
         recyclerView.setAdapter(adapter);
     }
 
-//
-//    private static class MyOnClickListener implements View.OnClickListener {
-//
-//        private final Context context;
-//
-//        private MyOnClickListener(Context context) {
-//            this.context = context;
-//        }
-//
-//        @Override
-//        public void onClick(View v) {
-//            removeItem(v);
-//        }
-//
-//        private void removeItem(View v) {
-//            int selectedItemPosition = recyclerView.getChildPosition(v);
-//            RecyclerView.ViewHolder viewHolder
-//                    = recyclerView.findViewHolderForPosition(selectedItemPosition);
-//            TextView textViewName
-//                    = (TextView) viewHolder.itemView.findViewById(R.id.listnamewarehouse);
-//            String selectedName = (String) textViewName.getText();
-//            int selectedItemId = -1;
-//            for (int i = 0; i < MyWarehouseData.nameArray.length; i++) {
-//                if (selectedName.equals(MyWarehouseData.nameArray[i])) {
-//                    selectedItemId = MyWarehouseData.id_[i];
-//                }
-//            }
-//            removedItems.add(selectedItemId);
-//            data.remove(selectedItemPosition);
-//            adapter.notifyItemRemoved(selectedItemPosition);
-//        }
-//    }
 }
