@@ -41,16 +41,17 @@
                     android:layout_marginLeft="100dp"
                     android:text="Warehouse Distance"
 
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="italic" />
+                    android:textColor="@color/color1"
+                    android:textStyle="bold|italic" />
 
                 <TextView
                     android:id="@+id/listlocwarehouse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="0.5"
                     android:text="Warehouse Location"
                     android:textAlignment="center"
+                    android:textColor="@color/color2"
+                    android:alpha="0.5"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
