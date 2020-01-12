@@ -1,9 +1,11 @@
 package com.example.mapstest;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -12,8 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class ProfileActivity extends AppCompatActivity {
-
-
+    private static final String LOG_TAG = ProfileActivity.class.getSimpleName();
+    private TextView mNumber1,mNumber2,mAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +33,22 @@ public class ProfileActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
+        mNumber1 = findViewById(R.id.tvNumber1);
+        mNumber2 = findViewById(R.id.tvNumber2);
+        mAddress = findViewById(R.id.tvNumber5);
         // Populate the profile information if exists.
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             setTitle(extras.getString("NAME", getString(R.string.profile_name)));
+            mAddress.setText(extras.getString("LOC"));
+            Log.d(LOG_TAG,"NOT NULL");
+            Log.d(LOG_TAG,extras.getString("LOC"));
+            Log.d(LOG_TAG,extras.getString("NAME"));
         }
+        else {
+            Log.d(LOG_TAG,"YEAH , NULL");
+        }
+
 
     }
 
