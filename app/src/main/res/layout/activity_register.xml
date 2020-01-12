@@ -202,7 +202,7 @@
                     android:layout_marginLeft="@dimen/sign_up_gap"
                     android:layout_marginRight="@dimen/sign_up_gap"
                     android:layout_below="@id/linear1"
-                    android:enabled="false"
+                    android:enabled="true"
                     android:text="Register" />
             </RelativeLayout>
         </LinearLayout>
