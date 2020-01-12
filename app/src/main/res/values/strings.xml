@@ -45,6 +45,9 @@
     <string name="content_profile_addContact_text">Add Contact </string>
     <string name="title_activity_buy_splash">buySplash</string>
 
-    <string name="activity_buy_splash_slogan_text"></string>
+    <string name="activity_buy_splash_slogan_text">Buy More Save More</string>
+    <string name="buy_app_name">Your own store</string>
+    <string name="title_activity_grid_item">GridItem</string>
+    <string name="title_activity_bsp__grid">Bsp_Grid</string>
 
 </resources>

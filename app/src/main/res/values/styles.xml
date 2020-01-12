@@ -41,4 +41,18 @@
 
     </style>
 
+    //GoGrocery styles
+
+    <style name="MyTheme.AppBarOverlay" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="BuyToolBarStyle" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <style name="BuyMyTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -18,4 +18,10 @@
 
     <color name="temperature_background">@color/blue</color>
     <color name="temperature_text">@android:color/white</color>
+
+    //goGrocery colors
+
+    <color name="ldrawer_color">#deffffff</color>
+    <color name="material">#DA4453</color>
+    <color name="light_green">#8BC34A</color>
 </resources>

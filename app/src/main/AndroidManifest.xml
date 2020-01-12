@@ -16,7 +16,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".buySplash"
+            android:name=".Bsp_Grid"
+            android:label="@string/title_activity_bsp__grid"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".GridItem"
+            android:label="@string/title_activity_grid_item"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Splash"
+            android:exported="true"
             android:label="@string/title_activity_buy_splash"
             android:parentActivityName=".ProfileActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -24,7 +36,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mapstest.ProfileActivity" />
         </activity>
-
         <activity android:name=".BuyActivity" />
         <activity
             android:name=".ui.login.RegisterActivity"
@@ -46,12 +57,11 @@
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ProfileActivity"
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="true"
             android:label="@string/profile_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true" />
-
-<!--        <activity android:name=".ProfileActivity"></activity>-->
+            android:theme="@style/AppTheme.NoActionBar" /> <!-- <activity android:name=".ProfileActivity"></activity> -->
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
