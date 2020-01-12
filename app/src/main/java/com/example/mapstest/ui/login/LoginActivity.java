@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.View;
@@ -175,12 +176,21 @@ public class LoginActivity extends AppCompatActivity {
                         intent.putExtra("email",usernameEditText.getText().toString());
                         switch (get_type(usernameEditText.getText().toString()))
                         {
-                            case "farmer":
+                            case "farmer":{
                                 intent.setClass(LoginActivity.this, FarmerActivity.class);
-                            case "retailer":
+                                break;
+                            }
+
+                            case "retailer":{
+
                                 intent.setClass(LoginActivity.this, RetailersActivity.class);
+                                break;
+                            }
                             case "warehouse":
+                            {
                                 intent.setClass(LoginActivity.this, WarehouseActivity.class);
+                                break;
+                            }
                         }
                         startActivity(intent);
                     }
@@ -301,10 +311,13 @@ public class LoginActivity extends AppCompatActivity {
     }
     private String get_type(String user)
     {
-        Pattern p=Pattern.compile("(.*)@");
+        Pattern p=Pattern.compile("(.*)(@)");
         Matcher m=p.matcher(user);
         if(m.find())
-            return m.group(0);
+        {
+            Log.i("usertype",m.group(0));
+            return m.group(1);
+        }
         else
             return "";
     }
