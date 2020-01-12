@@ -143,6 +143,5 @@ public class HomeActivity extends AppCompatActivity {
         result.addItem(new SecondaryDrawerItem().withName("Shop By Category").withTag("CATEGORY_LABEL").withSelectable(false).withSetSelected(false).withTextColor(getResources().getColor(R.color.material)));
         result.addItem(new DividerDrawerItem());
 
-
     }
 }
