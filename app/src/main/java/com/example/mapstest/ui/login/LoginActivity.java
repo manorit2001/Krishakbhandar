@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
-        final TextView error = (TextView) findViewById(R.id.error);
+        final TextView error = findViewById(R.id.error);
 
         passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

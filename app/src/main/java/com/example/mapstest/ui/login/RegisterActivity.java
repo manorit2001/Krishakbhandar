@@ -20,7 +20,10 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.mapstest.FarmerActivity;
 import com.example.mapstest.R;
+import com.example.mapstest.RetailersActivity;
+import com.example.mapstest.WarehouseActivity;
 import com.example.mapstest.tempmaps;
 import com.google.android.gms.maps.model.LatLng;
 
@@ -35,21 +38,79 @@ public class RegisterActivity extends AppCompatActivity {
     final private int LOCATION_RES=1;
     private Boolean validuser=new Boolean(true);
     private Boolean validpass=new Boolean(true);
-    private String use
+    private String username;
+    private String lastname;
+    private String firstname;
+    private String mob_no;
+    private String email;
+    private String Lat;
+    private String Long;
+//    private String
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         Spinner spinner = findViewById(R.id.spinner);
-        final EditText usernameEditText=(EditText) findViewById(R.id.email);
-        final EditText passwordEditText=(EditText) findViewById(R.id.password);
+        final EditText usernameEditText= findViewById(R.id.email);
+        final EditText passwordEditText= findViewById(R.id.password);
+        final EditText mobNo = findViewById(R.id.mobno);
+        final EditText firstName=findViewById(R.id.firstname);
+        final EditText lastName=findViewById(R.id.lastname);
         final Button registerButton = findViewById(R.id.signup);
 //        final TextView error = (TextView) findViewById(R.id.error);
         Intent intent=getIntent();
         usernameEditText.setText(intent.getStringExtra("name"));
         passwordEditText.setText(intent.getStringExtra("pass"));
 
+        mobNo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                mob_no=s.toString();
+            }
+        });
+        firstName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                firstname=s.toString();
+            }
+        });
+        lastName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                lastname=s.toString();
+            }
+        });
         usernameEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -87,7 +148,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                username=s.toString();
             }
         });
         passwordEditText.addTextChangedListener(new TextWatcher() {
@@ -127,7 +188,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-        Button locbtn=(Button) findViewById(R.id.locbutton);
+        Button locbtn= findViewById(R.id.locbutton);
         locbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,7 +200,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                ArrayList<View> views = new ArrayList<View>();
-                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linear1);
+                LinearLayout linearLayout = findViewById(R.id.linear1);
                 for(int i=0;i<views.size();i++)
                     linearLayout.removeView(views.get(i));
                 views.clear();
@@ -178,9 +239,38 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent();
+                intent.putExtra("email",usernameEditText.getText().toString());
+                intent.putExtra("name",firstname + " " + lastname);
+                intent.putExtra("mobno", mobNo.getText().toString());
+                TextView textView= findViewById(R.id.latitude);
+                intent.putExtra("latitude", textView.getText().toString());
+                textView= findViewById(R.id.longitude);
+                intent.putExtra("longitude", textView.getText().toString());
+                intent.putExtra("type",spinner.getSelectedItem().toString());
+                switch (spinner.getSelectedItem().toString())
+                {
+                    case "Farmer":{
+                        intent.setClass(RegisterActivity.this, FarmerActivity.class);
+                        break;
+                    }
+
+                    case "Retailer":{
+
+                        intent.setClass(RegisterActivity.this, RetailersActivity.class);
+                        break;
+                    }
+                    case "Warehouse":
+                    {
+                        intent.setClass(RegisterActivity.this, WarehouseActivity.class);
+                        break;
+                    }
+                }
+                startActivity(intent);
 
             }
         });
+
+
 
         /*
         <EditText
@@ -228,7 +318,7 @@ public class RegisterActivity extends AppCompatActivity {
         views.add(editText);
         editText.setLayoutParams(layoutParams);
         //location button
-        LinearLayout loc=(LinearLayout) findViewById(R.id.Locationview);
+        LinearLayout loc= findViewById(R.id.Locationview);
         loc.setVisibility(View.VISIBLE);
 
 //        //text view
@@ -258,7 +348,7 @@ public class RegisterActivity extends AppCompatActivity {
 //            TODO:get the returned LatLng object
             double Lat= data.getDoubleExtra("latitude",0.0);
             double Long= data.getDoubleExtra("longitude",0.0);
-            TextView textView=(TextView) findViewById(R.id.latitude);
+            TextView textView= findViewById(R.id.latitude);
             textView.setText(Double.toString(Lat));
             textView= findViewById(R.id.longitude);
             textView.setText(Double.toString(Long));
