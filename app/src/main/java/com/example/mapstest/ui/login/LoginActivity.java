@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 //    private LoginViewModel loginViewModel;
     private Boolean validuser=new Boolean(false);
     private Boolean validpass=new Boolean(false);
-    private String[] UserEmails = new String[] {"farmer@gmail.com","retailer@gmail.com","warehouse@gmail.com"};
+    private String[] UserEmails = new String[] {"Farmer@gmail.com","Retailer@gmail.com","Warehouse@gmail.com"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -174,19 +174,21 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent();
                         intent.putExtra("email",usernameEditText.getText().toString());
+                        intent.putExtra("type",get_type(usernameEditText.getText().toString()));
+                        intent.putExtra("name",get_type(usernameEditText.getText().toString()));
                         switch (get_type(usernameEditText.getText().toString()))
                         {
-                            case "farmer":{
+                            case "Farmer":{
                                 intent.setClass(LoginActivity.this, FarmerActivity.class);
                                 break;
                             }
 
-                            case "retailer":{
+                            case "Retailer":{
 
                                 intent.setClass(LoginActivity.this, RetailersActivity.class);
                                 break;
                             }
-                            case "warehouse":
+                            case "Warehouse":
                             {
                                 intent.setClass(LoginActivity.this, WarehouseActivity.class);
                                 break;

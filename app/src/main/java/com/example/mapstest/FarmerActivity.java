@@ -32,7 +32,7 @@ import android.widget.Toast;
 public class FarmerActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    String name;
+    private String name;
     private String mob_no;
     private String email;
     private String Lat;
