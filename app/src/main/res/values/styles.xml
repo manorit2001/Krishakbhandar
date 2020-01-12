@@ -28,16 +28,17 @@
         <item name="android:textSize">24sp</item>
         <item name="android:gravity">center</item>
     </style>
-
+//Phone number
     <style name="ClockTextView">
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">25sp</item>
         <item name="android:gravity">center</item>
     </style>
-
+// Crop :
     <style name="DescriptionTextView">
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">30sp</item>
         <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
+
     </style>
 
 </resources>
