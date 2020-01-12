@@ -54,7 +54,9 @@ public class FarmerActivity extends AppCompatActivity {
 //        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
+
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View header=navigationView.getHeaderView(0);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -66,10 +68,17 @@ public class FarmerActivity extends AppCompatActivity {
 //        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         Intent intent=getIntent();
-        Toast.makeText(this, intent.getStringExtra("email"), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, intent.getStringExtra("name"), Toast.LENGTH_SHORT).show();
-//        ((TextView) drawer.findViewById(R.id.navheaderemail)).setText(intent.getStringExtra("email"));
-//        ((TextView) drawer.findViewById(R.id.navheadername)).setText(intent.getStringExtra("name"));
+//        Toast.makeText(this, intent.getStringExtra("email"), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, intent.getStringExtra("name"), Toast.LENGTH_SHORT).show();
+        email=intent.getStringExtra("email");
+        name=intent.getStringExtra("name");
+//        if(email==null || name==null)
+//        {
+//            email="farmer@gmail.com";
+//            name="farmer";
+//        }
+        ((TextView) header.findViewById(R.id.navheaderemail)).setText(email);
+        ((TextView) header.findViewById(R.id.navheadername)).setText(name);
     }
 
     @Override
