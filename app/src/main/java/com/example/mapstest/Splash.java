@@ -76,7 +76,7 @@ public class Splash extends FragmentActivity {
             public void onAnimationEnd(Animation arg0) {
 
                 Intent intent = new Intent(getApplicationContext(),
-                        HomeActivity.class);
+                        MainActivity.class);
                 startActivity(intent);
                 finish();
             }
