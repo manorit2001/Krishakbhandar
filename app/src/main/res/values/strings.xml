@@ -17,6 +17,7 @@
 
     <string name="menu_profile">Profile</string>
     <string name="menu_warehouse_list">Warehouse List</string>
+    <string name="menu_farmer_list">Farmer List</string>
     <string name="menu_buy">Buy</string>
     <string name="menu_qr_code">QR Code Scan</string>
     <string name="menu_share">Share</string>

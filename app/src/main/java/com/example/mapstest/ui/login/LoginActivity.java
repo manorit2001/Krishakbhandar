@@ -176,6 +176,9 @@ public class LoginActivity extends AppCompatActivity {
                         intent.putExtra("email",usernameEditText.getText().toString());
                         intent.putExtra("type",get_type(usernameEditText.getText().toString()));
                         intent.putExtra("name",get_type(usernameEditText.getText().toString()));
+                        intent.putExtra("mobno","9958343");
+                        intent.putExtra("latitude","29.134123");
+                        intent.putExtra("longitude","12.1231231");
                         switch (get_type(usernameEditText.getText().toString()))
                         {
                             case "Farmer":{
@@ -184,7 +187,6 @@ public class LoginActivity extends AppCompatActivity {
                             }
 
                             case "Retailer":{
-
                                 intent.setClass(LoginActivity.this, RetailersActivity.class);
                                 break;
                             }
