@@ -97,7 +97,7 @@ public class tempmaps extends FragmentActivity implements OnMapReadyCallback {
                 Intent intent=new Intent();
                 intent.putExtra("latitude",locselected.latitude);
                 intent.putExtra("longitude",locselected.longitude);
-                Log.i("Result",Double.toString(locselected.latitude) + "," + Double.toString(locselected.longitude));
+                Log.i("Result", locselected.latitude + "," + locselected.longitude);
                 setResult(RESULT_OK,intent);
                 finish();
             }

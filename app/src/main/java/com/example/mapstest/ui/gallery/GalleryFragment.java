@@ -48,9 +48,6 @@ public class GalleryFragment extends Fragment {
 //    private final String[] places = wname;
     private final String[] times = w_contact;
 
-
-
-
     private final SliderAdapter sliderAdapter = new SliderAdapter(pics, 20, new OnCardClickListener());
 
     private CardSliderLayoutManager layoutManger;
@@ -86,7 +83,7 @@ public class GalleryFragment extends Fragment {
 
 
     private void initRecyclerView(View view) {
-        recyclerView = (RecyclerView) view.findViewById(R.id.warehouse_recycleview);
+        recyclerView = view.findViewById(R.id.warehouse_recycleview);
         recyclerView.setAdapter(sliderAdapter);
         recyclerView.setHasFixedSize(true);
 
@@ -106,19 +103,19 @@ public class GalleryFragment extends Fragment {
 
 
     private void initSwitchers(View view) {
-        temperatureSwitcher = (TextSwitcher) view.findViewById(R.id.ts_temperature);
+        temperatureSwitcher = view.findViewById(R.id.ts_temperature);
         temperatureSwitcher.setFactory(new TextViewFactory(R.style.TemperatureTextView, true));
         temperatureSwitcher.setCurrentText(wdistance[0]);
 
-        placeSwitcher = (TextSwitcher) view.findViewById(R.id.ts_place);
+        placeSwitcher = view.findViewById(R.id.ts_place);
         placeSwitcher.setFactory(new TextViewFactory(R.style.PlaceTextView, false));
         placeSwitcher.setCurrentText(randomPlace());
 
-        clockSwitcher = (TextSwitcher) view.findViewById(R.id.ts_clock);
+        clockSwitcher = view.findViewById(R.id.ts_clock);
         clockSwitcher.setFactory(new TextViewFactory(R.style.ClockTextView, false));
         clockSwitcher.setCurrentText(times[0]);
 
-        descriptionsSwitcher = (TextSwitcher) view.findViewById(R.id.ts_description);
+        descriptionsSwitcher = view.findViewById(R.id.ts_description);
         descriptionsSwitcher.setInAnimation(view.getContext(), android.R.anim.fade_in);
         descriptionsSwitcher.setOutAnimation(view.getContext(), android.R.anim.fade_out);
         descriptionsSwitcher.setFactory(new TextViewFactory(R.style.DescriptionTextView, false));
@@ -130,8 +127,8 @@ public class GalleryFragment extends Fragment {
         countryAnimDuration = getResources().getInteger(R.integer.labels_animation_duration);
         countryOffset1 = getResources().getDimensionPixelSize(R.dimen.left_offset);
         countryOffset2 = getResources().getDimensionPixelSize(R.dimen.card_width);
-        country1TextView = (TextView) view.findViewById(R.id.tv_country_1);
-        country2TextView = (TextView) view.findViewById(R.id.tv_country_2);
+        country1TextView = view.findViewById(R.id.tv_country_1);
+        country2TextView = view.findViewById(R.id.tv_country_2);
 
         country1TextView.setX(countryOffset1);
         country2TextView.setX(countryOffset2);
@@ -186,8 +183,8 @@ public class GalleryFragment extends Fragment {
     }
 
     private void onActiveCardChange(int pos) {
-        int animH[] = new int[] {R.anim.slide_in_right, R.anim.slide_out_left};
-        int animV[] = new int[] {R.anim.slide_in_top, R.anim.slide_out_bottom};
+        int[] animH = new int[]{R.anim.slide_in_right, R.anim.slide_out_left};
+        int[] animV = new int[]{R.anim.slide_in_top, R.anim.slide_out_bottom};
 
         final boolean left2right = pos < currentPosition;
         if (left2right) {

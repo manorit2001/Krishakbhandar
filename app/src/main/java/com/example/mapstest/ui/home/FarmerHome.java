@@ -1,10 +1,12 @@
 package com.example.mapstest.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,14 +23,32 @@ public class FarmerHome extends Fragment {
 
     private HomeViewModel homeViewModel;
     private boolean draweropened;
+    private String name;
+    private String mob_no;
+    private String email;
+    private String Lat;
+    private String Long;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 //        homeViewModel =
 //                ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        ImageView imageView =(ImageView) root.findViewById(R.id.drawerbutton);
+        ImageView imageView = root.findViewById(R.id.drawerbutton);
         DrawerLayout drawer = getActivity().findViewById(R.id.drawer_layout);
+        Intent intent=getActivity().getIntent();
+        name=intent.getStringExtra("name");
+        email=intent.getStringExtra("email");
+        mob_no=intent.getStringExtra("mobno");
+        Lat=intent.getStringExtra("latitude");
+        Long=intent.getStringExtra("longitude");
+        ((TextView) root.findViewById(R.id.profilename)).setText(name);
+        ((TextView) root.findViewById(R.id.profiletype)).setText("Farmer");
+        ((TextView) root.findViewById(R.id.profilemobno)).setText(mob_no);
+        ((TextView) root.findViewById(R.id.profileemail)).setText(email);
+        ((TextView) root.findViewById(R.id.profilelat)).setText("Lat:"+Lat);
+        ((TextView) root.findViewById(R.id.profilelong)).setText("Long:"+Long);
+//        name=getActivity().
 //
         drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
