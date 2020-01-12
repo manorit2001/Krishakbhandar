@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#F7E307</color>
+    <color name="colorAccent">#E91E63</color>
+<!--    DONT CHANGE THESE VALUES, MAKE A NEW COLOR IF YOU REQUIRE AND NAME THEM VERBOSELY-->
     <color name="white">#ffffff</color>
     <color name="grey">#E9EAEE</color>
     <color name="yellow">#F8BA0F</color>

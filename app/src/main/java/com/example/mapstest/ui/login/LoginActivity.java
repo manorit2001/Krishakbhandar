@@ -24,6 +24,7 @@ import com.example.mapstest.RetailersActivity;
 import com.example.mapstest.UserHelper;
 import com.example.mapstest.WarehouseActivity;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 //    private LoginViewModel loginViewModel;
     private Boolean validuser=new Boolean(false);
     private Boolean validpass=new Boolean(false);
+    private String[] UserEmails = new String[] {"farmer@gmail.com","retailer@gmail.com","warehouse@gmail.com"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -123,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                     passwordEditText.setError("Password less than 5 characters!");
 //                    error.setText("Password less than 5 characters!");
 //                    error.setVisibility(View.VISIBLE);
-//                    loginButton.setEnabled(false);
+                    loginButton.setEnabled(false);
                 }
             }
 
@@ -135,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(db.UserExist(usernameEditText.getText().toString())) {
+               /* if(db.UserExist(usernameEditText.getText().toString())) {
                     error.setVisibility(View.INVISIBLE);
                     if(db.UserPassExist(usernameEditText.getText().toString(),passwordEditText.getText().toString())) {
 //                    Toast.makeText(getApplicationContext(),
@@ -149,6 +151,35 @@ public class LoginActivity extends AppCompatActivity {
                             case "Retailer":
                                 intent.setClass(LoginActivity.this, RetailersActivity.class);
                             case "Warehouse":
+                                intent.setClass(LoginActivity.this, WarehouseActivity.class);
+                        }
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        error.setText("Incorrect Password!");
+                        error.setVisibility(View.VISIBLE);
+                    }
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Sign Up",Toast.LENGTH_SHORT).show();
+                    signup(usernameEditText.getText().toString(),passwordEditText.getText().toString());
+                }*/ ///TODO:WHEN DATABASE IS BUILD UNCOMMENT
+
+
+                if(UserExists(usernameEditText.getText().toString())) {
+                    error.setVisibility(View.INVISIBLE);
+                    if(UserPassExists(usernameEditText.getText().toString(),passwordEditText.getText().toString())) {
+                        Toast.makeText(getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent();
+                        intent.putExtra("email",usernameEditText.getText().toString());
+                        switch (get_type(usernameEditText.getText().toString()))
+                        {
+                            case "farmer":
+                                intent.setClass(LoginActivity.this, FarmerActivity.class);
+                            case "retailer":
+                                intent.setClass(LoginActivity.this, RetailersActivity.class);
+                            case "warehouse":
                                 intent.setClass(LoginActivity.this, WarehouseActivity.class);
                         }
                         startActivity(intent);
@@ -249,6 +280,33 @@ public class LoginActivity extends AppCompatActivity {
         intent.putExtra("name",name);
         intent.putExtra("pass",passwd);
         startActivity(intent);
+    }
+    private boolean UserExists(String user)
+    {
+        boolean exist = false;
+        for(int i=0;i<3;i++)
+        {
+            if(user.equals(UserEmails[i]))
+                exist=true;
+        }
+        return exist;
+    }
+
+    private boolean UserPassExists(String user,String passwd)
+    {
+        boolean exist=false;
+        if(passwd.equals("password"))
+            exist=true;
+        return exist;
+    }
+    private String get_type(String user)
+    {
+        Pattern p=Pattern.compile("(.*)@");
+        Matcher m=p.matcher(user);
+        if(m.find())
+            return m.group(0);
+        else
+            return "";
     }
 
 }

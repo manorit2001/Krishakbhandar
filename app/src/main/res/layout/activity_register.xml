@@ -121,22 +121,48 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:visibility="gone">
+                        android:visibility="visible">
                         <TextView
-                            android:id="@+id/locationtext"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Set Location"
-                            android:textStyle="italic"
-                            />
+                            android:text="Set Location"/>
                         <Button
                             android:id="@+id/locbutton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Select" />
+                            android:text="Pick" />
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lat:"/>
+                        <TextView
+                            android:id="@+id/latitude"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/sign_up_gap"
+                            android:text="0.0"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Long:"/>
+                        <TextView
+                            android:id="@+id/longitude"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.0"/>
+                    </LinearLayout>
                     <TextView
                         android:id="@+id/dummytext"
                         android:layout_width="match_parent"

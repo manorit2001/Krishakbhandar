@@ -115,7 +115,7 @@ public class RegisterActivity extends AppCompatActivity {
                     passwordEditText.setError("Password less than 5 characters!");
 //                    error.setText("Password less than 5 characters!");
 //                    error.setVisibility(View.VISIBLE);
-//                    registerButton.setEnabled(false);
+                    registerButton.setEnabled(false);
                 }
             }
 
@@ -125,6 +125,14 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+
+        Button locbtn=(Button) findViewById(R.id.locbutton);
+        locbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(RegisterActivity.this, tempmaps.class),LOCATION_RES);
+            }
+        });
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -139,15 +147,18 @@ public class RegisterActivity extends AppCompatActivity {
                 {
                     case "Farmer":
                     {
-                        views = farmer(views);
+//                        views = add(views);
+                        break;
                     }
                     case "Retailer":
                     {
-
+                        views = add(views,"Retail Store name");
+                        break;
                     }
                     case "Warehouse":
                     {
-
+                        views = add(views,"Warehouse name");
+                        break;
                     }
                 }
                 for(int i=0;i<views.size();i++)
@@ -182,7 +193,7 @@ public class RegisterActivity extends AppCompatActivity {
 //        categories.add("Customer");
         categories.add("Farmer");
         categories.add("Retailer");
-        categories.add("Warehouse OR Cold Storage");
+        categories.add("Warehouse");
 //        categories.add("Delivery");
 //        categories.add("Travel");
 
@@ -197,14 +208,14 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    public ArrayList<View> farmer(ArrayList<View> views)
+    public ArrayList<View> add(ArrayList<View> views,String name)
     {
         //edit text
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) findViewById(R.id.dummyedit).getLayoutParams();
 //                        layoutParams.topMargin = R.dimen.sign_up_gap;
 //                        layoutParams.bottomMargin = R.dimen.sign_up_gap;
         EditText editText=new EditText(RegisterActivity.this);
-        editText.setHint("dummy");
+        editText.setHint(name);
         views.add(editText);
         editText.setLayoutParams(layoutParams);
         //location button
@@ -225,13 +236,7 @@ public class RegisterActivity extends AppCompatActivity {
 //        layoutParams.bottomMargin = getResources().getDimensionPixelSize(R.dimen.sign_up_gap);
 ////                        layoutParams.setMargins(getResources().getDimensionPixelSize(R.dimen.sign_up_gap),0,getResources().getDimensionPixelSize(R.dimen.sign_up_gap),getResources().getDimensionPixelSize(R.dimen.sign_up_gap));
 //        locbtn.setText("Set");
-        Button locbtn=(Button) findViewById(R.id.locbutton);
-        locbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(new Intent(RegisterActivity.this, tempmaps.class),LOCATION_RES);
-            }
-        });
+
 //        views.add(locbtn);
 //        locbtn.setLayoutParams(layoutParams);
 
@@ -241,8 +246,13 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == LOCATION_RES && resultCode == Activity.RESULT_OK) {
-            //TODO:get the returned LatLng object
-//            LatLng latlng= data.getExtras();
+//            TODO:get the returned LatLng object
+            double Lat= data.getDoubleExtra("latitude",0.0);
+            double Long= data.getDoubleExtra("longitude",0.0);
+            TextView textView=(TextView) findViewById(R.id.latitude);
+            textView.setText(Double.toString(Lat));
+            textView= findViewById(R.id.longitude);
+            textView.setText(Double.toString(Long));
 //            Log.e("Result", result);
         }
     }

@@ -8,6 +8,7 @@ import android.content.IntentSender;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -92,8 +93,11 @@ public class tempmaps extends FragmentActivity implements OnMapReadyCallback {
         bttnfind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                locselected = mMap.getCameraPosition().target;
                 Intent intent=new Intent();
-                intent.putExtra("location",locselected);
+                intent.putExtra("latitude",locselected.latitude);
+                intent.putExtra("longitude",locselected.longitude);
+                Log.i("Result",Double.toString(locselected.latitude) + "," + Double.toString(locselected.longitude));
                 setResult(RESULT_OK,intent);
                 finish();
             }
@@ -194,7 +198,13 @@ public class tempmaps extends FragmentActivity implements OnMapReadyCallback {
                         AutocompletePrediction selectedPrediction = predictionList.get(position);
                         String suggestion= materialSearchBar.getLastSuggestions().get(position).toString();
                         materialSearchBar.setText(suggestion);
-                        materialSearchBar.clearSuggestions();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                            materialSearchBar.clearSuggestions();
+
+                            }
+                        },1000);
                         InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                         if(imm!=null)
                             imm.hideSoftInputFromWindow(materialSearchBar.getWindowToken(),InputMethodManager.HIDE_IMPLICIT_ONLY);
@@ -270,8 +280,10 @@ public class tempmaps extends FragmentActivity implements OnMapReadyCallback {
                 @Override
                 public void onClick(View v) {
                     final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-
+                    if(materialSearchBar.isSuggestionsVisible())
+                        materialSearchBar.clearSuggestions();
+                    if(materialSearchBar.isSearchEnabled())
+                        materialSearchBar.disableSearch();
                     if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                         gpspopup();
                     } else {
