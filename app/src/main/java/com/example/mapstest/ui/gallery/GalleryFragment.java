@@ -38,7 +38,7 @@ import java.util.Random;
 
 
 public class GalleryFragment extends Fragment {
-    private final int[] pics = MyWarehouseData.drawableArray;
+    private int[] pics = null;
     private final String[] wname = MyWarehouseData.nameArray;
     private final String[] wdistance = MyWarehouseData.distArray;
     private final String[] w_contact = MyWarehouseData.loc;
@@ -48,7 +48,7 @@ public class GalleryFragment extends Fragment {
 //    private final String[] places = wname;
     private final String[] times = w_contact;
 
-    private final SliderAdapter sliderAdapter = new SliderAdapter(pics, 20, new OnCardClickListener());
+    private SliderAdapter sliderAdapter = null;
 
     private CardSliderLayoutManager layoutManger;
     private RecyclerView recyclerView;
@@ -69,9 +69,19 @@ public class GalleryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.activity_list_warehouse, container, false);
+        if(getActivity().getIntent().getStringExtra("type").toString().equals("Retailer"))
+        {
+            pics = MyWarehouseData.farmer_img_array;
+        }else
+        {
+            pics = MyWarehouseData.warehouse_img_array;
+        }
+        sliderAdapter = new SliderAdapter(pics, 20, new OnCardClickListener());
         initRecyclerView(root);
         initCountryText(root);
         initSwitchers(root);
+
+
         return root;
     }
 
