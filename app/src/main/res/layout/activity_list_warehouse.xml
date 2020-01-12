@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@drawable/gradient_list_view"
     android:clipChildren="false">
 
     <RelativeLayout
@@ -24,7 +25,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:textSize="38sp"
+                android:textColor="@color/white"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -32,7 +34,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:textSize="38sp"
+                android:textSize="24sp"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
         </FrameLayout>
@@ -43,7 +46,8 @@
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/temperature_background">
+            android:background="@drawable/temperature_background"
+            android:backgroundTint="@color/white">
 
             <TextSwitcher
                 android:id="@+id/ts_temperature"
@@ -108,12 +112,12 @@
             android:id="@+id/gradient_top"
             android:layout_width="match_parent"
             android:layout_height="90dp"
-            android:background="@android:color/white"/>
+            android:background="@android:color/transparent"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:background="@drawable/gradient_map"
+            android:background="@android:color/transparent"
             android:layout_below="@+id/gradient_top"/>
 
         <TextSwitcher

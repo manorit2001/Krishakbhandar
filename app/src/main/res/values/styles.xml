@@ -20,7 +20,7 @@
 
     <style name="TemperatureTextView">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/temperature_text</item>
+        <item name="android:textColor">@color/profilebackground</item>
         <item name="android:gravity">center</item>
     </style>
 
