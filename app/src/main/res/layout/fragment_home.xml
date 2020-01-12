@@ -48,7 +48,8 @@
 
         <RelativeLayout
             android:layout_width="50dp"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            android:visibility="invisible">
 
             <ImageView
                 android:layout_width="40dp"
@@ -102,7 +103,7 @@
                         android:layout_width="150dp"
                         android:layout_height="90dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/pp" />
+                        android:src="@drawable/img11" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -111,20 +112,23 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/profilename"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/proximanovaregular"
-                        android:text="Sanskar Tiwari"
+                        android:text="Ghanshyam Chopra"
                         android:textColor="#424242"
                         android:textSize="21sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/profiletype"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/proximanovaregular"
-                        android:text="Android Developer"
+                        android:text="Farmer"
+                        android:layout_gravity="center_horizontal"
                         android:textSize="14sp" />
 
 
@@ -136,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:paddingBottom="10dp"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -222,7 +226,8 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/circularbordersolid"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/personalinfobtn"
@@ -283,7 +288,8 @@
                 android:id="@+id/personalinfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                >
 
                 <!--About Me Card-->
                 <LinearLayout
@@ -777,7 +783,8 @@
                 android:id="@+id/review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
 
                 <LinearLayout
@@ -785,7 +792,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/circularbordersolid"
                     android:orientation="horizontal"
-                    android:padding="20dp">
+                    android:padding="20dp"
+                    >
 
                     <LinearLayout
                         android:layout_width="wrap_content"

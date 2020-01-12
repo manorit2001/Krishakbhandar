@@ -76,9 +76,6 @@ public class GalleryFragment extends Fragment {
     private final String[] places = wname;
     private final String[] times = wname;
 
-
-
-
     private final SliderAdapter sliderAdapter = new SliderAdapter(pics, 20, new OnCardClickListener());
 
     private CardSliderLayoutManager layoutManger;

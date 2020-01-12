@@ -35,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     final private int LOCATION_RES=1;
     private Boolean validuser=new Boolean(true);
     private Boolean validpass=new Boolean(true);
+    private String use
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,6 +170,14 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent();
 
             }
         });

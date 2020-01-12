@@ -4,7 +4,7 @@ public class MyWarehouseData {
 
 
 
-        public static String[] nameArray = {"Deepanshu", "Manorit", "Parth", "Ashutosh","Kanu Priya","Tanya","Prithvi","Karan","AShish","Aditya","Chaitanya","Vishal","Aakash"};
+        public static String[] nameArray = {"Manorit", "Deepanshu", "Parth", "Ashutosh","Kanu Priya","Tanya","Prithvi","Karan","AShish","Aditya","Chaitanya","Vishal","Aakash"};
         public static String[] distArray = {"1.5 km", "1.6 km", "2.0 km", "2.2 km","1.5 km", "1.6 km", "2.0 km", "2.2 km","1.5 km", "1.6 km", "2.0 km", "2.2 km"} ;
 
         public static int[] drawableArray = {R.drawable.person2, R.drawable.person3, R.drawable.person1,R.drawable.paintbrush,R.drawable.img5 ,R.drawable.img6 ,R.drawable.img7,R.drawable.img8,R.drawable.img9,R.drawable.img10,R.drawable.img11 };
