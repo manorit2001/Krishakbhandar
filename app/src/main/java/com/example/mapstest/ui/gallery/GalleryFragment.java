@@ -34,47 +34,19 @@ import com.example.mapstest.cards.SliderAdapter;
 import com.ramotion.cardslider.CardSliderLayoutManager;
 import com.ramotion.cardslider.CardSnapHelper;
 
-import java.util.List;
+import java.util.Random;
 
-//public class GalleryFragment extends Fragment {
-//
-//    private GalleryViewModel galleryViewModel;
-//
-//    public View onCreateView(@NonNull LayoutInflater inflater,
-//                             ViewGroup container, Bundle savedInstanceState) {
-////        galleryViewModel =
-////                ViewModelProviders.of(getActivity()).get(GalleryViewModel.class);
-//        View root = inflater.inflate(R.layout.activity_list_warehouse, container, false);
-////        final TextView textView = root.getActivity().findViewById(R.id.text_gallery);
-////        galleryViewModel.getText().observe(getActivity(), new Observer<String>() {
-////            @Override
-////            public void onChanged(@Nullable String s) {
-////                textView.setText(s);
-////            }
-////        });
-//        return root;
-//    }
-//}
-
-        
 
 public class GalleryFragment extends Fragment {
-    //    private final int[] pics = {R.drawable.p1, R.drawable.p2, R.drawable.p3, R.drawable.p4, R.drawable.p5};
-//    private final int[] descriptions = {R.string.text1, R.string.text2, R.string.text3, R.string.text4, R.string.text5};
-//    private final String[] countries = {"PARIS", "SEOUL", "LONDON", "BEIJING", "THIRA"};
-//    private final String[] places = {"The Louvre", "Gwanghwamun", "Tower Bridge", "Temple of Heaven", "Aegeana Sea"};
-//    private final String[] temperatures = {"21°C", "19°C", "17°C", "23°C", "20°C"};
-//    private final String[] times = {"Aug 1 - Dec 15    7:00-18:00", "Sep 5 - Nov 10    8:00-16:00", "Mar 8 - May 21    7:00-18:00"};
-//    private List<WarehouseModel> data;
-
     private final int[] pics = MyWarehouseData.drawableArray;
     private final String[] wname = MyWarehouseData.nameArray;
     private final String[] wdistance = MyWarehouseData.distArray;
     private final String[] w_contact = MyWarehouseData.loc;
+    private final String[] w_crops = MyWarehouseData.crops;
 
-    private final String[] desciptions = wname;
-    private final String[] places = wname;
-    private final String[] times = wname;
+    private final String[] desciptions = w_crops;
+//    private final String[] places = wname;
+    private final String[] times = w_contact;
 
 
 
@@ -96,48 +68,22 @@ public class GalleryFragment extends Fragment {
     private long countryAnimDuration;
     private int currentPosition;
 
-    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_list_warehouse);
-//
-////        initData();
-//        initRecyclerView();
-//        initCountryText();
-//        initSwitchers();
-//    }
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-//        galleryViewModel =
-//                ViewModelProviders.of(getActivity()).get(GalleryViewModel.class);
         View root = inflater.inflate(R.layout.activity_list_warehouse, container, false);
-//        final TextView textView = root.getActivity().findViewById(R.id.text_gallery);
-//        galleryViewModel.getText().observe(getActivity(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
-//        initData();
         initRecyclerView(root);
         initCountryText(root);
         initSwitchers(root);
         return root;
     }
 
-//    private  void initData(){
-//        data = new ArrayList<WarehouseModel>();
-//        int n = 11;
-//        for(int i = 0; i < n; i++){
-//            data.add(new WarehouseModel(
-//                    MyWarehouseData.nameArray[i],
-//                    MyWarehouseData.distArray[i],
-//                    MyWarehouseData.id_[i],
-//                    R.drawable.p2,
-//                    MyWarehouseData.loc[i]
-//            ));
-//        }
-//    }
+    public String randomPlace(){
+        Random rand = new Random();
+        String[] cities = {"Delhi", "Haryana", "Punjab", "Mumbai", "Bhopal"};
+        return cities[rand.nextInt(cities.length)];
+    }
+
 
     private void initRecyclerView(View view) {
         recyclerView = (RecyclerView) view.findViewById(R.id.warehouse_recycleview);
@@ -158,13 +104,6 @@ public class GalleryFragment extends Fragment {
         new CardSnapHelper().attachToRecyclerView(recyclerView);
     }
 
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        if (isFinishing() && decodeMapBitmapTask != null) {
-//            decodeMapBitmapTask.cancel(true);
-//        }
-//    }
 
     private void initSwitchers(View view) {
         temperatureSwitcher = (TextSwitcher) view.findViewById(R.id.ts_temperature);
@@ -173,7 +112,7 @@ public class GalleryFragment extends Fragment {
 
         placeSwitcher = (TextSwitcher) view.findViewById(R.id.ts_place);
         placeSwitcher.setFactory(new TextViewFactory(R.style.PlaceTextView, false));
-        placeSwitcher.setCurrentText(places[0]);
+        placeSwitcher.setCurrentText(randomPlace());
 
         clockSwitcher = (TextSwitcher) view.findViewById(R.id.ts_clock);
         clockSwitcher.setFactory(new TextViewFactory(R.style.ClockTextView, false));
@@ -183,21 +122,8 @@ public class GalleryFragment extends Fragment {
         descriptionsSwitcher.setInAnimation(view.getContext(), android.R.anim.fade_in);
         descriptionsSwitcher.setOutAnimation(view.getContext(), android.R.anim.fade_out);
         descriptionsSwitcher.setFactory(new TextViewFactory(R.style.DescriptionTextView, false));
-        descriptionsSwitcher.setCurrentText(wname[0]);
+        descriptionsSwitcher.setCurrentText(desciptions[0]);
 
-//        mapSwitcher = (ImageSwitcher) getActivity().findViewById(R.id.ts_map);
-//        mapSwitcher.setInAnimation(getActivity(), R.anim.fade_in);
-//        mapSwitcher.setOutAnimation(getActivity(), R.anim.fade_out);
-//        mapSwitcher.setFactory(new ImageViewFactory());
-//        mapSwitcher.setImageResource(maps[0]);
-
-//        mapLoadListener = new DecodeBitmapTask.Listener() {
-//            @Override
-//            public void onPostExecuted(Bitmap bitmap) {
-//                ((ImageView)mapSwitcher.getNextView()).setImageBitmap(bitmap);
-//                mapSwitcher.showNext();
-//            }
-//        };
     }
 
     private void initCountryText(View view) {
@@ -216,32 +142,6 @@ public class GalleryFragment extends Fragment {
         country2TextView.setTypeface(Typeface.createFromAsset(view.getContext().getAssets(), "open-sans-extrabold.ttf"));
     }
 
-//    private void initGreenDot() {
-//        mapSwitcher.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//            @Override
-//            public void onGlobalLayout() {
-//                mapSwitcher.getViewTreeObserver().removeOnGlobalLayoutListener(getActivity());
-//
-//                final int viewLeft = mapSwitcher.getLeft();
-//                final int viewTop = mapSwitcher.getTop() + mapSwitcher.getHeight() / 3;
-//
-//                final int border = 100;
-//                final int xRange = Math.max(1, mapSwitcher.getWidth() - border * 2);
-//                final int yRange = Math.max(1, (mapSwitcher.getHeight() / 3) * 2 - border * 2);
-//
-//                final Random rnd = new Random();
-//
-//                for (int i = 0, cnt = dotCoords.length; i < cnt; i++) {
-//                    dotCoords[i][0] = viewLeft + border + rnd.nextInt(xRange);
-//                    dotCoords[i][1] = viewTop + border + rnd.nextInt(yRange);
-//                }
-//
-//                greenDot = getActivity().findViewById(R.id.green_dot);
-//                greenDot.setX(dotCoords[0][0]);
-//                greenDot.setY(dotCoords[0][1]);
-//            }
-//        });
-//    }
 
     private void setCountryText(String text, boolean left2right) {
         final TextView invisibleText;
@@ -308,14 +208,14 @@ public class GalleryFragment extends Fragment {
 
         placeSwitcher.setInAnimation(getActivity(), animV[0]);
         placeSwitcher.setOutAnimation(getActivity(), animV[1]);
-        placeSwitcher.setText(places[pos % places.length]);
+        placeSwitcher.setText(randomPlace());
 
         clockSwitcher.setInAnimation(getActivity(), animV[0]);
         clockSwitcher.setOutAnimation(getActivity(), animV[1]);
         clockSwitcher.setText(times[pos % times.length]);
 
 //        descriptionsSwitcher.setText(data.get(pos % data.size()).get_name());
-        descriptionsSwitcher.setText(wname[pos % wname.length]);
+        descriptionsSwitcher.setText(desciptions[pos % desciptions.length]);
 
 
         currentPosition = pos;
@@ -383,7 +283,7 @@ public class GalleryFragment extends Fragment {
                 final Intent intent = new Intent(getActivity(), ProfileActivity.class);
 //                intent.putExtra(DetailsActivity.BUNDLE_IMAGE_ID, pics[activeCardPosition % pics.length]);
                 intent.putExtra("NAME", wname[activeCardPosition % wname.length]);
-                intent.putExtra("DIST", wdistance[activeCardPosition % wname.length]);
+                intent.putExtra("DIST", wdistance[activeCardPosition % wdistance.length]);
                 intent.putExtra("LOC", w_contact[activeCardPosition % w_contact.length]);
 
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
