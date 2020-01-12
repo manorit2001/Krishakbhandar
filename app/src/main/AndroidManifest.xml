@@ -15,8 +15,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".lists"
-            android:exported="true"/>
         <activity android:name=".BuyActivity"></activity>
         <activity
             android:name=".ui.login.RegisterActivity"
@@ -38,11 +36,12 @@
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ProfileActivity"
-            android:exported="true"
+        <activity android:name=".ProfileActivity"
             android:label="@string/profile_name"
-            android:theme="@style/AppTheme.NoActionBar" /> <!-- <activity android:name=".ProfileActivity"></activity> -->
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true" />
+
+<!--        <activity android:name=".ProfileActivity"></activity>-->
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
