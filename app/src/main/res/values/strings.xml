@@ -43,5 +43,8 @@
     <string name="content_profile_addressTypePrimary_text">Home</string>
     <string name="content_profile_addressTypeSecondary_text">Warehouse</string>
     <string name="content_profile_addContact_text">Add Contact </string>
+    <string name="title_activity_buy_splash">buySplash</string>
+
+    <string name="activity_buy_splash_slogan_text"></string>
 
 </resources>

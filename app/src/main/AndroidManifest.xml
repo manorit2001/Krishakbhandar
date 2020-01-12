@@ -15,7 +15,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BuyActivity"></activity>
+        <activity
+            android:name=".buySplash"
+            android:label="@string/title_activity_buy_splash"
+            android:parentActivityName=".ProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mapstest.ProfileActivity" />
+        </activity>
+
+        <activity android:name=".BuyActivity" />
         <activity
             android:name=".ui.login.RegisterActivity"
             android:label="RegisterActivity"
