@@ -3,7 +3,7 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="title_activity_tempmaps">Map</string>
     <string name="title_activity_register">Sign Up</string>
-***REMOVED***
+    <string name="google_maps_key">API_KEY_HERE</string>
     <string name="title_activity_login">Sign in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
